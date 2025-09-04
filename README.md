@@ -92,9 +92,21 @@ This project can be developed locally using `clasp`, the command-line tool for G
     ```
 6.  Create a new Apps Script project:
     ```bash
-    npx clasp create --type sheets --title "Gmail Vacation Responder"
+    npx clasp create --title "Gmail Vacation Responder"
     ```
     This will create a `.clasp.json` file with the script ID.
+7.  **Configure the Manifest File:**
+    *   The previous step created a default `appsscript.json` file. Overwrite its contents with the contents of `appsscript.json.template`. This ensures the Gmail API is enabled.
+    *   You can do this manually, or by running the following command:
+        *   **Windows (Command Prompt):** `copy appsscript.json.template appsscript.json`
+        *   **Windows (PowerShell):** `Copy-Item appsscript.json.template appsscript.json`
+        *   **macOS/Linux:** `cp appsscript.json.template appsscript.json`
+8.  **Push the Manifest to Google Apps Script:**
+    *   Run the following command to push all the files to your Google Apps Script project:
+        ```bash
+        npx clasp push
+        ```
+    *   When prompted with `✔ Manifest file has been updated. Do you want to push and overwrite?`, confirm by typing `y` and pressing Enter.
 
 #### Pushing and Pulling Code
 *   Push code to your Apps Script project:
