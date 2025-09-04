@@ -1,6 +1,6 @@
-# Gmail Out of Office - Google Apps Script 🚀
+# 📧 Scheduled 'Out of Office' messages for Gmail
 
-This Google Apps Script can be used to automatically set your Gmail Out of Office auto-responder. This is for example useful if you have a fixed day off.
+This Google Apps Script can be used to automatically set your Gmail vacation responder. This is for example useful if you have a fixed day off, and would like schedule an automatic 'out of office' message.
 
 ## 📖 Table of Contents
 - [About the Project](#about-the-project)
@@ -33,6 +33,7 @@ Before you begin, ensure you have the following:
 ***
 
 ## 🛠️ Setup & Installation
+Below you'll find two installation procedures: one for [non-technical users](#for-non-technical-users-web-ui) and one for [developers](#for-developers-clasp).
 
 ### For Non-Technical Users (Web UI)
 Follow these steps to set up the script in your Google Account using the web interface:
@@ -48,19 +49,19 @@ Follow these steps to set up the script in your Google Account using the web int
     *   Copy the content of the `gmail-response.html` file from this repository and paste it into the new file.
     *   Click the **Save project** icon (💾).
     
-    3.  **Configure the Manifest File:**
-        *   In the Apps Script editor, click the **Project Settings** icon (⚙️) on the left sidebar.
-        *   Check the box for **Show "appsscript.json" manifest file in editor**.
-        *   Return to the editor and click on the `appsscript.json` file.
-        *   Copy the entire content of the `appsscript.json` file from this repository and paste it into the manifest file.
-        *   Click the **Save project** icon (💾).
-    
-    4.  **Authorize the Script:**
-        *   The first time you run a function, Google will prompt you to authorize the script.
-    *   Select a function to run from the toolbar (e.g., `turnOnVacationResponder`).
-    *   Click **Run**.
-    *   Follow the on-screen prompts. You will see a "Google hasn't verified this app" warning. Click **Advanced**, then **Go to [Your Script Name] (unsafe)**.
-    *   Review the permissions and click **Allow**. This is necessary for the script to access your Google services.
+3.  **Configure the Manifest File:**
+    *   In the Apps Script editor, click the **Project Settings** icon (⚙️) on the left sidebar.
+    *   Check the box for **Show "appsscript.json" manifest file in editor**.
+    *   Return to the editor and click on the `appsscript.json` file.
+    *   Copy the entire content of the `appsscript.json` file from this repository and paste it into the manifest file.
+    *   Click the **Save project** icon (💾).
+
+4.  **Authorize the Script:**
+    *   The first time you run a function, Google will prompt you to authorize the script.
+*   Select a function to run from the toolbar (e.g., `turnOnVacationResponder`).
+*   Click **Run**.
+*   Follow the on-screen prompts. You will see a "Google hasn't verified this app" warning. Click **Advanced**, then **Go to [Your Script Name] (unsafe)**.
+*   Review the permissions and click **Allow**. This is necessary for the script to access your Google services.
 
 ### For Developers (clasp)
 This project can be developed locally using `clasp`, the command-line tool for Google Apps Script.
@@ -72,7 +73,8 @@ This project can be developed locally using `clasp`, the command-line tool for G
 1.  Clone this repository:
     ```bash
     git clone https://github.com/t-ben/gmail-out-of-office-gas.git
-    ```2.  Navigate to the project directory:
+    ```
+2.  Navigate to the project directory:
     ```bash
     cd gmail-out-of-office-gas
     ```
@@ -138,8 +140,12 @@ const CONFIG = {
 };
 ```
 
-## 🤝 Contributing
+## 🤝 Contributing & Credits
 Contributions are welcome! Please feel free to submit a pull request.
 
+### 🙏 Credits
+- [Jan van Unnik](https://jan.marketing/) for making this happen
+- Our friends at [Kilo Code](https://github.com/Kilo-Org/kilocode) for their awesome coding assistant
+
 ## 📜 License
-This project is licensed under the CC BY-SA 4.0 License - see the [LICENSE](LICENSE) file for details.
+This project is licensed by [Marketing Engineers B.V.](https://marketingengineers.nl) under the CC BY-SA 4.0 License - see the [LICENSE](LICENSE) file for details.
