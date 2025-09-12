@@ -1,5 +1,6 @@
 # Google Apps Script project files
 .clasp.json
+appsscript.json
 
 # Node.js dependencies
 node_modules/
