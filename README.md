@@ -139,6 +139,8 @@ To customize the script for your needs, modify the configuration variables in th
 ```javascript
 const CONFIG = {
   // The duration (in days) for which the vacation responder should be active.
+  // This should be set to your vacation duration, up to and including your last day off.
+  // The email will automatically show your back-to-work date (DAYS_ACTIVE + 1 day).
   DAYS_ACTIVE: 3.5,
 
   // The subject line of the vacation responder email.

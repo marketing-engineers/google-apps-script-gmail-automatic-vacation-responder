@@ -9,6 +9,8 @@
  */
 const CONFIG = {
   // The duration (in days) for which the vacation responder should be active.
+  // This should be set to your vacation duration, up to and including your last day off.
+  // The email will automatically show your back-to-work date (DAYS_ACTIVE + 1 day).
   // This can be a decimal value (e.g., 3.5 for 3 and a half days).
   DAYS_ACTIVE: 3.5,
 
@@ -31,6 +33,9 @@ function turnOnVacationResponder() {
 
     const startDate = new Date();
     const endDate = new Date(startDate.getTime() + (CONFIG.DAYS_ACTIVE * 24 * 60 * 60 * 1000));
+    
+    // Calculate back-to-work date (one day after vacation responder ends)
+    const backToWorkDate = new Date(endDate.getTime() + (24 * 60 * 60 * 1000));
 
     if (gmail.enableAutoReply) {
       const currentEndDate = new Date(parseInt(gmail.endTime)).getTime();
@@ -41,9 +46,9 @@ function turnOnVacationResponder() {
         return;
       }
     }
-    const formattedEndDate = Utilities.formatDate(endDate, Session.getScriptTimeZone(), "yyyy-MM-dd");
+    const formattedBackToWorkDate = Utilities.formatDate(backToWorkDate, Session.getScriptTimeZone(), "yyyy-MM-dd");
 
-    const responseBody = HtmlService.createHtmlOutputFromFile('gmail-response').getContent().replace('{{endDate}}', formattedEndDate);
+    const responseBody = HtmlService.createHtmlOutputFromFile('gmail-response').getContent().replace('{{backToWorkDate}}', formattedBackToWorkDate);
 
     const vacationSettings = {
       enableAutoReply: true,
