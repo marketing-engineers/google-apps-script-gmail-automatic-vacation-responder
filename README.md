@@ -152,6 +152,7 @@ const CONFIG = {
 
   // If true, the auto-reply will only be sent to people in your domain.
   RESTRICT_TO_DOMAIN: false,
+```
 
 ### 📅 Timing Examples
 
@@ -193,8 +194,6 @@ Monday       ←─── Return Date Shown in Email
 - **Solution:** Check your script's timezone in Google Apps Script settings
 
 ***
-};
-```
 
 ## 🤝 Contributing & Credits
 Contributions are welcome! Please feel free to submit a pull request.
