@@ -8,10 +8,10 @@
  * @description User-specific settings for the vacation responder.
  */
 const CONFIG = {
-  // The duration (in days) for which the vacation responder should be active.
-  // This should be set to your vacation duration, up to and including your last day off.
-  // The email will automatically show your back-to-work date (DAYS_ACTIVE + 1 day).
-  // This can be a decimal value (e.g., 3.5 for 3 and a half days).
+  // The duration (in days) from when this script runs until the vacation responder ends.
+  // Example: Script runs Thursday 6pm, you want Monday return → set DAYS_ACTIVE: 3
+  // (Thu 6pm + 3 days = Sun 6pm end, shows Mon return in email)
+  // This can be a decimal value (e.g., 3.5 for Tuesday return).
   DAYS_ACTIVE: 3.5,
 
   // The subject line of the vacation responder email.

@@ -127,7 +127,7 @@ This project can be developed locally using `clasp`, the command-line tool for G
 * **Automatic Execution:** If you want the script to run automatically, you can set up a trigger.
     * In the Apps Script editor, click the **Triggers** icon (⏰) on the left sidebar.
     * Click **+ Add Trigger** and configure it as needed (e.g., to run `turnOnVacationResponder` on a time-based schedule).
-        * **Note:** When the script is run on a schedule, it will check the end date of the current vacation responder. If the end date is different from what the script is configured to set, it will update the vacation responder. This ensures that your vacation responder is always set for the correct duration.
+        * **Note:** When the script is run on a schedule, it will check the end date of the current vacation responder. If the end date is different from what the script is configured to set, it will update the vacation responder. This ensures that your vacation responder always ends at the configured time.
 
 The script will configure and activate your [Gmail Vacation responder](https://support.google.com/mail/answer/25922?hl=en&co=GENIE.Platform%3DDesktop).
 
@@ -138,9 +138,10 @@ To customize the script for your needs, modify the configuration variables in th
 
 ```javascript
 const CONFIG = {
-  // The duration (in days) for which the vacation responder should be active.
-  // This should be set to your vacation duration, up to and including your last day off.
-  // The email will automatically show your back-to-work date (DAYS_ACTIVE + 1 day).
+  // The duration (in days) from when this script runs until the vacation responder ends.
+  // Example: Script runs Thursday 6pm, you want Monday return → set DAYS_ACTIVE: 3
+  // (Thu 6pm + 3 days = Sun 6pm end, shows Mon return in email)
+  // This can be a decimal value (e.g., 3.5 for Tuesday return).
   DAYS_ACTIVE: 3.5,
 
   // The subject line of the vacation responder email.
@@ -151,6 +152,47 @@ const CONFIG = {
 
   // If true, the auto-reply will only be sent to people in your domain.
   RESTRICT_TO_DOMAIN: false,
+
+### 📅 Timing Examples
+
+The script calculates dates from **when it runs**, not when your vacation starts. Here are common scenarios:
+
+| Scenario | Script Runs | DAYS_ACTIVE | Responder Ends | Return Date Shown |
+|----------|-------------|-------------|----------------|-------------------|
+| Friday only | Thu 6pm | 3 | Sun 6pm | Monday |
+| Long weekend (Fri-Mon) | Thu 6pm | 3.5 | Mon 12pm | Tuesday |
+| Full week (Mon-Fri) | Fri 6pm | 5 | Wed 6pm | Thursday |
+
+**Key Principle:** Set `DAYS_ACTIVE` to show your **first working day** as the return date.
+
+### 🧮 How to Calculate DAYS_ACTIVE
+
+**Step-by-step:**
+1. **Identify when your script runs** (e.g., Thursday 6:30 PM)
+2. **Identify when you return to work** (e.g., Monday)  
+3. **Count days from script runtime to day before return** (Thu 6:30 PM → Sun 6:30 PM = 3 days)
+4. **Set DAYS_ACTIVE to this value** (3)
+
+**Visual Timeline Example:**
+```
+Thursday 6pm ←─── Script Runs
+   ↓ (DAYS_ACTIVE: 3)
+Sunday 6pm   ←─── Responder Ends  
+Monday       ←─── Return Date Shown in Email
+```
+
+### 🔧 Common Configuration Issues
+
+**Problem:** "My return date is wrong"
+- **Solution:** Remember `DAYS_ACTIVE` starts counting from when the script runs, not when your vacation starts
+
+**Problem:** "I'm getting auto-replies on my return day"  
+- **Solution:** Reduce `DAYS_ACTIVE` by 0.5-1 day to ensure responder ends before work hours
+
+**Problem:** "The timing seems off"
+- **Solution:** Check your script's timezone in Google Apps Script settings
+
+***
 };
 ```
 
