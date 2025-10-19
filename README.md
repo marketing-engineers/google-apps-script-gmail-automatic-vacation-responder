@@ -136,11 +136,10 @@ The script will configure and activate your [Gmail Vacation responder](https://s
 ## ⚙️ Configuration
 To customize the script for your needs, modify the configuration variables in the `CONFIG` object at the top of the `Code.gs` file.
 
+### Basic Configuration
 ```javascript
 const CONFIG = {
   // The duration (in days) for which the vacation responder should be active.
-  // This should be set to your vacation duration, up to and including your last day off.
-  // The email will automatically show your back-to-work date (DAYS_ACTIVE + 1 day).
   DAYS_ACTIVE: 3.5,
 
   // The subject line of the vacation responder email.
@@ -151,8 +150,156 @@ const CONFIG = {
 
   // If true, the auto-reply will only be sent to people in your domain.
   RESTRICT_TO_DOMAIN: false,
+
+  // --- COMPANY BRANDING & CONTACT INFORMATION ---
+  COMPANY_LOGO_URL: "https://your-website.com/logo.png",
+  COMPANY_NAME: "Your Company Name",
+  YOUR_NAME: "Your Full Name",
+  
+  // --- CONTACT INFORMATION (optional) ---
+  PHONE_NUMBER: "+1 (555) 123-4567",
+  EMAIL_ADDRESS: "your.email@company.com",
+  WEBSITE_URL: "https://your-website.com",
+  
+  // --- TEMPLATE CUSTOMIZATION ---
+  CUSTOM_MESSAGE: "", // Leave empty to use default message
+  LOGO_MAX_WIDTH: "200px",
+  LOGO_ALT_TEXT: "Company Logo"
 };
 ```
+
+### 🎨 Logo Configuration Guide
+
+#### Adding Your Company Logo
+
+1. **Prepare Your Logo**
+   - **Recommended formats**: PNG (preferred), JPG, or SVG
+   - **Recommended size**: 200-400px wide, maintain aspect ratio
+   - **File size**: Keep under 100KB for faster loading
+
+2. **Host Your Logo Publicly**
+   - Upload your logo to your company website (e.g., `https://yourcompany.com/assets/logo.png`)
+   - Or use a CDN service like Cloudinary, Imgur, or AWS S3
+   - Ensure the URL is publicly accessible (no authentication required)
+
+3. **Configure the Logo URL**
+   ```javascript
+   COMPANY_LOGO_URL: "https://yourcompany.com/assets/logo.png",
+   ```
+
+4. **Customize Logo Display**
+   ```javascript
+   LOGO_MAX_WIDTH: "200px", // Adjust based on your logo
+   LOGO_ALT_TEXT: "Your Company Logo" // For accessibility
+   ```
+
+#### Logo Best Practices
+
+| Logo Type | Recommended Settings | Notes |
+|-----------|---------------------|-------|
+| **Wide Logo** | `LOGO_MAX_WIDTH: "300px"` | Good for horizontal company names |
+| **Square Logo** | `LOGO_MAX_WIDTH: "150px"` | Perfect for icons or square designs |
+| **Tall Logo** | `LOGO_MAX_WIDTH: "120px"` | For vertical or stacked designs |
+
+#### Example Configurations
+
+**Corporate Setup:**
+```javascript
+COMPANY_LOGO_URL: "https://company.com/logo.png",
+COMPANY_NAME: "Marketing Engineers B.V.",
+YOUR_NAME: "Jan van Unnik",
+PHONE_NUMBER: "+31 6 12345678",
+EMAIL_ADDRESS: "jan@marketingengineers.nl",
+WEBSITE_URL: "https://marketingengineers.nl"
+```
+
+**Minimal Setup (No Contact Info):**
+```javascript
+COMPANY_LOGO_URL: "https://company.com/logo.png",
+COMPANY_NAME: "Your Company",
+YOUR_NAME: "Your Name",
+PHONE_NUMBER: "", // Hidden
+EMAIL_ADDRESS: "", // Hidden
+WEBSITE_URL: "" // Hidden
+```
+
+**No Logo Setup:**
+```javascript
+COMPANY_LOGO_URL: "", // No logo displayed
+COMPANY_NAME: "Your Company",
+YOUR_NAME: "Your Name"
+```
+
+### 🔧 Troubleshooting Logo Issues
+
+| Problem | Solution |
+|---------|----------|
+| **Logo not displaying** | Verify the URL is publicly accessible. Test by opening the URL in an incognito browser window. |
+| **Logo too large** | Reduce `LOGO_MAX_WIDTH` value (e.g., from `"200px"` to `"150px"`) |
+| **Logo quality poor** | Use a higher resolution image or switch to PNG format |
+| **Slow loading** | Optimize image file size or use a CDN |
+| **Logo blocked by firewall** | Use HTTPS URLs and avoid IP addresses |
+
+### 🎯 Template Customization Options
+
+#### Custom Out-of-Office Messages
+```javascript
+// Professional
+CUSTOM_MESSAGE: "I'm attending a business conference with limited email access.",
+
+// Vacation
+CUSTOM_MESSAGE: "I'm currently on vacation and will have limited access to email.",
+
+// Medical/Personal
+CUSTOM_MESSAGE: "I'm temporarily away from the office and will respond when I return."
+```
+
+#### Contact Information Display
+- Leave any contact field empty (`""`) to hide it from the email
+- The contact information section will automatically hide if all contact fields are empty
+- Use international phone number format for `PHONE_NUMBER`
+
+### 🚀 Advanced Features
+
+#### Dynamic Template System
+The new template system supports:
+- **Conditional display**: Sections automatically hide when not configured
+- **Responsive design**: Looks professional on desktop and mobile email clients
+- **Accessibility**: Proper alt text and semantic HTML structure
+- **Email compatibility**: Inline CSS for maximum email client support
+
+#### Email Client Testing
+The template has been optimized for:
+- Gmail (web, iOS, Android)
+- Outlook (web, desktop, mobile)
+- Apple Mail
+- Thunderbird
+- Yahoo Mail
+
+### 📱 Mobile Optimization
+The template automatically adapts to mobile devices with:
+- Responsive table layout
+- Readable font sizes
+- Touch-friendly spacing
+- Optimized logo sizing
+
+### 🔐 Security Considerations
+- Logo URLs must use HTTPS for security
+- No JavaScript or external scripts (email clients block these)
+- All styling is inline for maximum compatibility
+- No tracking pixels or external dependencies
+
+***
+
+## 💡 Tips for Success
+
+1. **Test Your Configuration**: Use the manual execution feature to test your setup before enabling triggers
+2. **Logo Optimization**: Compress your logo images for faster loading
+3. **Professional Tone**: Keep messages concise and professional
+4. **Regular Updates**: Update contact information when it changes
+5. **Backup Configuration**: Save your CONFIG settings in a separate document
+
+***
 
 ## 🤝 Contributing & Credits
 Contributions are welcome! Please feel free to submit a pull request.

@@ -22,6 +22,31 @@ const CONFIG = {
 
   // If true, the auto-reply will only be sent to people in your domain.
   RESTRICT_TO_DOMAIN: false,
+
+  // --- COMPANY BRANDING & CONTACT INFORMATION ---
+  // Company logo URL - must be publicly accessible (e.g., from your website or CDN)
+  // Leave empty ("") to disable logo display
+  COMPANY_LOGO_URL: "",
+  
+  // Company name - displayed in the email template
+  COMPANY_NAME: "Your Company Name",
+  
+  // Your name - displayed in the signature
+  YOUR_NAME: "Your Name",
+  
+  // --- CONTACT INFORMATION (optional) ---
+  // Leave empty ("") to hide specific contact information
+  PHONE_NUMBER: "",
+  EMAIL_ADDRESS: "",
+  WEBSITE_URL: "",
+  
+  // --- TEMPLATE CUSTOMIZATION ---
+  // Custom out-of-office message (optional)
+  CUSTOM_MESSAGE: "",
+  
+  // Logo display settings
+  LOGO_MAX_WIDTH: "200px", // Maximum width for the logo
+  LOGO_ALT_TEXT: "Company Logo" // Alt text for accessibility
 };
 
 /**
@@ -48,7 +73,35 @@ function turnOnVacationResponder() {
     }
     const formattedBackToWorkDate = Utilities.formatDate(backToWorkDate, Session.getScriptTimeZone(), "yyyy-MM-dd");
 
-    const responseBody = HtmlService.createHtmlOutputFromFile('gmail-response').getContent().replace('{{backToWorkDate}}', formattedBackToWorkDate);
+    // Get the HTML template and replace all variables
+    let responseBody = HtmlService.createHtmlOutputFromFile('gmail-response').getContent();
+    
+    // Create template variables object
+    const templateVariables = {
+      backToWorkDate: formattedBackToWorkDate,
+      companyLogoUrl: CONFIG.COMPANY_LOGO_URL,
+      companyName: CONFIG.COMPANY_NAME,
+      yourName: CONFIG.YOUR_NAME,
+      phoneNumber: CONFIG.PHONE_NUMBER,
+      emailAddress: CONFIG.EMAIL_ADDRESS,
+      websiteUrl: CONFIG.WEBSITE_URL,
+      logoMaxWidth: CONFIG.LOGO_MAX_WIDTH,
+      logoAltText: CONFIG.LOGO_ALT_TEXT,
+      // Out of office message - use custom or default
+      outOfOfficeMessage: CONFIG.CUSTOM_MESSAGE || "I'm currently out of office with limited access to email.",
+      // Conditional display CSS
+      logoDisplay: CONFIG.COMPANY_LOGO_URL ? "" : "display: none;",
+      contactDisplay: (CONFIG.PHONE_NUMBER || CONFIG.EMAIL_ADDRESS || CONFIG.WEBSITE_URL) ? "" : "display: none;",
+      phoneDisplay: CONFIG.PHONE_NUMBER ? "" : "display: none;",
+      emailDisplay: CONFIG.EMAIL_ADDRESS ? "" : "display: none;",
+      websiteDisplay: CONFIG.WEBSITE_URL ? "" : "display: none;"
+    };
+    
+    // Replace all template variables
+    for (const [key, value] of Object.entries(templateVariables)) {
+      const regex = new RegExp(`{{${key}}}`, 'g');
+      responseBody = responseBody.replace(regex, value);
+    }
 
     const vacationSettings = {
       enableAutoReply: true,
