@@ -37,8 +37,7 @@ const CONFIG = {
   // --- CONTACT INFORMATION (optional) ---
   // Leave empty ("") to hide specific contact information
   PHONE_NUMBER: "",
-  EMAIL_ADDRESS: "",
-  WEBSITE_URL: "",
+  WEBSITE_URL: "", // Used for logo clickable link
   
   // --- TEMPLATE CUSTOMIZATION ---
   // Custom out-of-office message (optional)
@@ -83,18 +82,15 @@ function turnOnVacationResponder() {
       companyName: CONFIG.COMPANY_NAME,
       yourName: CONFIG.YOUR_NAME,
       phoneNumber: CONFIG.PHONE_NUMBER,
-      emailAddress: CONFIG.EMAIL_ADDRESS,
-      websiteUrl: CONFIG.WEBSITE_URL,
+      websiteUrl: CONFIG.WEBSITE_URL || "#", // Use website URL for logo link, fallback to #
       logoMaxWidth: CONFIG.LOGO_MAX_WIDTH,
       logoAltText: CONFIG.LOGO_ALT_TEXT,
       // Out of office message - use custom or default
       outOfOfficeMessage: CONFIG.CUSTOM_MESSAGE || "I'm currently out of office with limited access to email.",
       // Conditional display CSS
       logoDisplay: CONFIG.COMPANY_LOGO_URL ? "" : "display: none;",
-      contactDisplay: (CONFIG.PHONE_NUMBER || CONFIG.EMAIL_ADDRESS || CONFIG.WEBSITE_URL) ? "" : "display: none;",
-      phoneDisplay: CONFIG.PHONE_NUMBER ? "" : "display: none;",
-      emailDisplay: CONFIG.EMAIL_ADDRESS ? "" : "display: none;",
-      websiteDisplay: CONFIG.WEBSITE_URL ? "" : "display: none;"
+      contactDisplay: CONFIG.PHONE_NUMBER ? "" : "display: none;",
+      phoneDisplay: CONFIG.PHONE_NUMBER ? "" : "display: none;"
     };
     
     // Replace all template variables

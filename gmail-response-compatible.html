@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Out of Office</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: Arial, Helvetica, 'Segoe UI', sans-serif; background-color: #f8f8ff; color: #303030; line-height: 1.5; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%;">
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="width: 100%; max-width: 600px; margin: 0 auto; background-color: #f8f8ff; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+        <tr>
+            <td style="padding: 40px 30px 30px 30px;">
+                <!-- Logo Section with Fallback -->
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="width: 100%; margin-bottom: 25px; {{logoDisplay}} mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                    <tr>
+                        <td align="center" style="text-align: center;">
+                            <!-- Logo with Text Fallback -->
+                            <div style="font-size: 24px; font-weight: bold; color: #303030; padding: 15px 25px; background-color: #e9b44c; border: 3px solid #303030; display: inline-block; {{logoDisplay}}">
+                                {{companyName}}
+                            </div>
+                            <!-- Actual Image (may be blocked) -->
+                            <div style="{{logoDisplay}}">
+                                <img src="{{companyLogoUrl}}" alt="{{logoAltText}}" width="200" style="max-width: {{logoMaxWidth}}; height: auto; display: block; margin: 10px auto 0 auto; border: 0; outline: none; text-decoration: none;" />
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                
+                <!-- Main Content -->
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="width: 100%; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                    <tr>
+                        <td>
+                            <!-- Header Box -->
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="width: 100%; background-color: #e9b44c; border: 4px solid #303030; margin-bottom: 25px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                                <tr>
+                                    <td align="center" style="padding: 25px; text-align: center;">
+                                        <h1 style="margin: 0; font-size: 32px; font-weight: bold; color: #303030; font-family: Arial, Helvetica, 'Segoe UI', sans-serif; text-transform: uppercase;">OUT OF OFFICE</h1>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Combined Message Content and Signature -->
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="width: 100%; background-color: #ffffff; border: 3px solid #303030; margin-bottom: 25px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                                <tr>
+                                    <td style="padding: 30px;">
+                                        <p style="margin: 0 0 20px 0; font-size: 16px; font-weight: normal; color: #303030; text-align: center; font-family: Arial, Helvetica, 'Segoe UI', sans-serif;">{{outOfOfficeMessage}}</p>
+                                        
+                                        <!-- Back to Work Date -->
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="width: 100%; background-color: #f8f8ff; border: 2px solid #303030; margin-bottom: 25px; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                                            <tr>
+                                                <td align="center" style="padding: 15px; text-align: center;">
+                                                    <p style="margin: 0; font-size: 18px; font-weight: bold; color: #303030; font-family: Arial, Helvetica, 'Segoe UI', sans-serif;">
+                                                        I will be back on {{backToWorkDate}}
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                        
+                                        <!-- Signature within main content -->
+                                        <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="width: 100%; margin-top: 25px; padding-top: 20px; border-top: 2px solid #e9e9e9; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                                            <tr>
+                                                <td align="center" style="text-align: center;">
+                                                    <p style="margin: 0 0 8px 0; font-size: 16px; color: #303030; font-weight: bold; font-family: Arial, Helvetica, 'Segoe UI', sans-serif;">
+                                                        Best regards,
+                                                    </p>
+                                                    <p style="margin: 0 0 5px 0; font-size: 20px; color: #303030; font-weight: bold; text-transform: uppercase; font-family: Arial, Helvetica, 'Segoe UI', sans-serif;">
+                                                        {{yourName}}
+                                                    </p>
+                                                    <p style="margin: 0; font-size: 14px; color: #303030; font-weight: normal; font-family: Arial, Helvetica, 'Segoe UI', sans-serif;">
+                                                        {{companyName}}
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </table>
+                            
+                            <!-- Disclaimer Section -->
+                            <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="width: 100%; background-color: #303030; color: #f8f8ff; border: 3px solid #303030; margin-bottom: 0; {{contactDisplay}} mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                                <tr>
+                                    <td align="center" style="padding: 20px; text-align: center;">
+                                        <p style="margin: 0 0 10px 0; font-size: 14px; font-weight: bold; text-align: center; color: #f8f8ff; font-family: Arial, Helvetica, 'Segoe UI', sans-serif;">
+                                            FOR URGENT MATTERS ONLY
+                                        </p>
+                                        <p style="margin: 0; font-size: 12px; font-weight: normal; text-align: center; line-height: 1.4; color: #f8f8ff; font-family: Arial, Helvetica, 'Segoe UI', sans-serif; {{phoneDisplay}}">
+                                            Phone: {{phoneNumber}}
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        
+        <!-- Footer -->
+        <tr>
+            <td style="padding: 25px 30px; text-align: center;">
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%" style="width: 100%; background-color: #303030; color: #f8f8ff; border: 2px solid #303030; mso-table-lspace: 0pt; mso-table-rspace: 0pt;">
+                    <tr>
+                        <td align="center" style="padding: 15px; text-align: center;">
+                            <p style="margin: 0; font-size: 12px; font-weight: normal; color: #f8f8ff; font-family: Arial, Helvetica, 'Segoe UI', sans-serif;">
+                                This is an automated response. Please do not reply to this email.
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

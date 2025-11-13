@@ -4,16 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Out of Office</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; background-color: #f8f9fa; color: #333333; line-height: 1.6;">
-    <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="width: 100%; max-width: 600px; margin: 0 auto; background-color: #ffffff;">
+<body style="margin: 0; padding: 0; font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif; background-color: #f8f8ff; color: #303030; line-height: 1.5;">
+    <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="width: 100%; max-width: 600px; margin: 0 auto; background-color: #f8f8ff;">
         <tr>
             <td style="padding: 40px 30px 30px 30px;">
                 <!-- Logo Section -->
-                <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="width: 100%; margin-bottom: 30px; {{logoDisplay}}">
+                <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="width: 100%; margin-bottom: 25px; {{logoDisplay}}">
                     <tr>
                         <td style="text-align: center;">
-                            <img src="{{companyLogoUrl}}" alt="{{logoAltText}}" style="max-width: {{logoMaxWidth}}; height: auto; display: block; margin: 0 auto;" />
+                            <a href="{{websiteUrl}}" style="text-decoration: none; display: inline-block;">
+                                <img src="{{companyLogoUrl}}" alt="{{logoAltText}}" style="max-width: {{logoMaxWidth}}; height: auto; display: block; margin: 0 auto;" />
+                            </a>
                         </td>
                     </tr>
                 </table>
@@ -22,48 +25,59 @@
                 <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="width: 100%;">
                     <tr>
                         <td>
-                            <h1 style="margin: 0 0 20px 0; font-size: 24px; font-weight: 600; color: #2c3e50; text-align: center;">Out of Office</h1>
+                            <!-- Header Box -->
+                            <div style="background-color: #e9b44c; border: 4px solid #303030; padding: 25px; margin-bottom: 25px; text-align: center;">
+                                <h1 style="margin: 0; font-size: 32px; font-weight: 800; color: #303030; text-transform: uppercase; letter-spacing: 1px;">OUT OF OFFICE</h1>
+                            </div>
                             
-                            <p style="margin: 0 0 20px 0; font-size: 16px; color: #555555; text-align: center;">{{outOfOfficeMessage}}</p>
+                            <!-- Combined Message Content and Signature -->
+                            <div style="background-color: #ffffff; border: 3px solid #303030; padding: 30px; margin-bottom: 25px;">
+                                <p style="margin: 0 0 20px 0; font-size: 16px; font-weight: 400; color: #303030; text-align: center;">{{outOfOfficeMessage}}</p>
+                                
+                                <div style="background-color: #f8f8ff; border: 2px solid #303030; padding: 15px; margin-bottom: 25px; text-align: center;">
+                                    <p style="margin: 0; font-size: 18px; font-weight: 700; color: #303030;">
+                                        I will be back on {{backToWorkDate}}
+                                    </p>
+                                </div>
+                                
+                                <!-- Signature within main content -->
+                                <div style="text-align: center; margin-top: 25px; padding-top: 20px; border-top: 2px solid #e9e9e9;">
+                                    <p style="margin: 0 0 8px 0; font-size: 16px; color: #303030; font-weight: 600;">
+                                        Best regards,
+                                    </p>
+                                    <p style="margin: 0 0 5px 0; font-size: 20px; color: #303030; font-weight: 800; text-transform: uppercase;">
+                                        {{yourName}}
+                                    </p>
+                                    <p style="margin: 0; font-size: 14px; color: #303030; font-weight: 400;">
+                                        {{companyName}}
+                                    </p>
+                                </div>
+                            </div>
                             
-                            <p style="margin: 0 0 30px 0; font-size: 16px; color: #555555; text-align: center;">
-                                <strong>I will be back on {{backToWorkDate}}.</strong>
-                            </p>
-                            
-                            <!-- Contact Information Section -->
-                            <div style="margin: 30px 0; padding: 20px; background-color: #f8f9fa; border-radius: 6px; border-left: 4px solid #3498db; {{contactDisplay}}">
-                                <h3 style="margin: 0 0 15px 0; font-size: 16px; font-weight: 600; color: #2c3e50;">Contact Information</h3>
-                                <p style="margin: 5px 0; font-size: 14px; color: #555555; {{phoneDisplay}}">📞 {{phoneNumber}}</p>
-                                <p style="margin: 5px 0; font-size: 14px; color: #555555; {{emailDisplay}}">✉️ {{emailAddress}}</p>
-                                <p style="margin: 5px 0; font-size: 14px; color: #555555; {{websiteDisplay}}">🌐 <a href="{{websiteUrl}}" style="color: #3498db; text-decoration: none;">{{websiteUrl}}</a></p>
+                            <!-- Disclaimer Section -->
+                            <div style="background-color: #303030; color: #f8f8ff; padding: 20px; margin-bottom: 0; border: 3px solid #303030; {{contactDisplay}}">
+                                <p style="margin: 0 0 10px 0; font-size: 14px; font-weight: 600; text-align: center;">
+                                    FOR URGENT MATTERS ONLY
+                                </p>
+                                <p style="margin: 0; font-size: 12px; font-weight: 400; text-align: center; line-height: 1.4; {{phoneDisplay}}">
+                                    Phone: {{phoneNumber}}
+                                </p>
                             </div>
                         </td>
                     </tr>
                 </table>
                 
-                <!-- Signature -->
-                <table role="presentation" cellspacing="0" cellpadding="0" border="0" style="width: 100%; margin-top: 40px; border-top: 1px solid #e1e8ed; padding-top: 20px;">
-                    <tr>
-                        <td>
-                            <p style="margin: 0; font-size: 16px; color: #2c3e50; font-weight: 500;">
-                                Best regards,<br>
-                                {{yourName}}
-                            </p>
-                            <p style="margin: 10px 0 0 0; font-size: 14px; color: #7f8c8d;">
-                                {{companyName}}
-                            </p>
-                        </td>
-                    </tr>
-                </table>
             </td>
         </tr>
         
         <!-- Footer -->
         <tr>
-            <td style="padding: 20px 30px; text-align: center; background-color: #f8f9fa; border-top: 1px solid #e1e8ed;">
-                <p style="margin: 0; font-size: 12px; color: #95a5a6;">
-                    This is an automated response. Please do not reply to this email.
-                </p>
+            <td style="padding: 25px 30px; text-align: center;">
+                <div style="background-color: #303030; color: #f8f8ff; padding: 15px; border: 2px solid #303030;">
+                    <p style="margin: 0; font-size: 12px; font-weight: 400;">
+                        This is an automated response. Please do not reply to this email.
+                    </p>
+                </div>
             </td>
         </tr>
     </table>
